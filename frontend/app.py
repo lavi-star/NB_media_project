@@ -19,7 +19,7 @@ if st.button(" Run Auto-Research Pipeline Now", use_container_width=True):
     with st.spinner("Agent is actively scraping the web and generating posts... (Check terminal for live logs)"):
         try:
             # Hit your FastAPI backend
-            response = requests.post("http://127.0.0.1:8000/api/v1/trigger-now")
+            response = requests.post(f"{BACKEND_URL}/api/v1/trigger-now")
             
             if response.status_code == 200:
                 st.success(" Pipeline executed successfully! The generated posts have been printed to your backend terminal.")
@@ -38,7 +38,7 @@ if st.button(" Refresh Database"):
     pass
 
 try:
-    db_response = requests.get("http://127.0.0.1:8000/api/v1/posts")
+    db_response = requests.get(f"{BACKEND_URL}/api/v1/posts")
     if db_response.status_code == 200:
         posts = db_response.json()
         
