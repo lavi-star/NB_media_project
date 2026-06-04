@@ -1,0 +1,26 @@
+
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persists your SQLite database file on your local machine so data isn't lost when containers stop
+      - ./backend/db:/app/db
+    env_file:
+      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    environment:
+      # Tells the frontend to look for the backend service name inside the docker network
+      - BACKEND_URL=http://backend:8000

@@ -1,5 +1,7 @@
 import streamlit as st
 import requests
+import os 
+BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 # 1. Page Configuration
 st.set_page_config(page_title="NB Media Agent Dashboard", page_icon="", layout="centered")
