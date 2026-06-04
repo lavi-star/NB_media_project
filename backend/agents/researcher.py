@@ -5,10 +5,11 @@ from typing import List, Dict
 
 class AutoResearcherAgent:
     def __init__(self):
-        # High-signal feeds relevant to media, marketing, tech, and creator economics
+        # Swapped to High-Signal, Founder-Level Technical Feeds
         self.rss_feeds = [
-            "https://techcrunch.com/feed/",
-            "https://www.theverge.com/rss/index.xml"
+            "https://news.ycombinator.com/rss",  # Hacker News (Ultra-technical)
+            "https://techcrunch.com/category/artificial-intelligence/feed/", # TechCrunch AI only
+            "https://techcrunch.com/category/enterprise/feed/", # TechCrunch B2B/SaaS only
         ]
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
